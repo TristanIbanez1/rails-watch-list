@@ -1,11 +1,15 @@
 <h1><%= @list.name %></h1>
-<h2>Movies:</h2>
+
+<h2>Movies in this list:</h2>
 <ul>
   <% @list.bookmarks.each do |bookmark| %>
     <li>
       <%= bookmark.movie.title %> - <%= bookmark.comment %>
-      <%= link_to 'Remove', bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Remove', list_bookmark_path(@list, bookmark), method: :delete, data: { confirm: 'Are you sure?' } %>
     </li>
   <% end %>
 </ul>
-<%= render 'bookmarks/form', list: @list %>
+
+<h2>Add a new bookmark:</h2>
+<%= render 'bookmarks/form', bookmark: @bookmark %>
+<%= link_to 'Back to lists', lists_path %>

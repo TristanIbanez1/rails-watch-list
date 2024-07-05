@@ -1,13 +1,11 @@
-<%= form_with model: [list, list.bookmarks.build], local: true do |f| %>
+<%= form_with model: [@list, bookmark], local: true do |form| %>
   <div>
-    <%= f.label :movie_id %>
-    <%= f.collection_select :movie_id, Movie.all, :id, :title %>
+    <%= form.label :movie_id %>
+    <%= form.collection_select :movie_id, Movie.all, :id, :title %>
   </div>
   <div>
-    <%= f.label :comment %>
-    <%= f.text_field :comment %>
+    <%= form.label :comment %>
+    <%= form.text_area :comment %>
   </div>
-  <div>
-    <%= f.submit 'Add Bookmark' %>
-  </div>
+  <%= form.submit 'Add Bookmark' %>
 <% end %>
